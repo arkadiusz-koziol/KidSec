@@ -1,0 +1,50 @@
+version: '3.7'
+
+networks:
+  subnet:
+    ipam:
+      config:
+        - subnet: 192.168.99.0/24
+
+services:
+  nginx:
+    build: ./docker/nginx
+    container_name: laravelWebsite-nginx
+    mem_reservation: 128M
+    volumes:
+      - .:/application
+    depends_on:
+      - php
+    networks:
+      subnet:
+        ipv4_address: 192.168.99.2
+
+  php:
+    image: php:8.2.0-fpm
+    container_name: laravelWebsite-php
+    build: ./docker/php
+    mem_reservation: 512M
+    volumes:
+      - .:/application
+      - ./docker/php/conf/php.ini:/usr/local/etc/php/php.ini
+    working_dir: /application
+    depends_on:
+      - mysql
+    networks:
+      subnet:
+        ipv4_address: 192.168.99.3
+
+  mysql:
+    image: mariadb:10.3.27
+    container_name: laravelWebsite-mysql
+    command: --explicit_defaults_for_timestamp
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravelWebsite
+    restart: always
+    volumes:
+      - ./docker/mysql/data/:/var/lib/mysql
+      - ./docker/mysql/log/:/var/log/mysql
+    networks:
+      subnet:
+        ipv4_address: 192.168.99.4
