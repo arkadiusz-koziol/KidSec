@@ -48,8 +48,14 @@ services:
 # Should be good
 networks:
   ahe-net:
-    name: ahe-net
-    internal: true
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
+         gateway: 10.5.0.1
+         aux_addresses:
+          db: 10.5.0.5
+          php: 10.5.0.6
   npm_default:
     name: npm_default
     external: true
