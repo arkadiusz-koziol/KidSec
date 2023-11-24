@@ -28,6 +28,7 @@ services:
       - db
     networks:
       - ahe-net
+      - npm_default
 # DB Done. Remmeber ro edit .env or database.php
   db:
     image: mariadb
