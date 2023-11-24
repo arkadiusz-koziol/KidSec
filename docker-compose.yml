@@ -9,6 +9,7 @@ networks:
 services:
   nginx:
     build: ./docker/nginx
+    pull_policy: build
     container_name: laravelWebsite-nginx
     mem_reservation: 128M
     volumes:
@@ -23,6 +24,7 @@ services:
     image: php:8.2.0-fpm
     container_name: laravelWebsite-php
     build: ./docker/php
+    pull_policy: build
     mem_reservation: 512M
     volumes:
       - .:/application
