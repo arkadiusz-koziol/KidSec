@@ -1,28 +1,22 @@
 version: '3.7'
 
-networks:
-  subnet:
-    ipam:
-      config:
-        - subnet: 192.168.99.0/24
-
 services:
   nginx:
     build: ./docker/nginx
     pull_policy: build
-    container_name: laravelWebsite-nginx
+    container_name: ahe-projekt-nginx
     mem_reservation: 128M
     volumes:
       - .:/application
     depends_on:
       - php
     networks:
-      subnet:
-        ipv4_address: 192.168.99.2
+      - ahe-net
+      - npm_default
 
   php:
     image: php:8.2.0-fpm
-    container_name: laravelWebsite-php
+    container_name: ahe-projekt-php
     build: ./docker/php
     pull_policy: build
     mem_reservation: 512M
@@ -33,12 +27,11 @@ services:
     depends_on:
       - mysql
     networks:
-      subnet:
-        ipv4_address: 192.168.99.3
+      - ahe-net
 
   mysql:
     image: mariadb:10.3.27
-    container_name: laravelWebsite-mysql
+    container_name: ahe-projekt-mysql
     command: --explicit_defaults_for_timestamp
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -48,5 +41,12 @@ services:
       - ./docker/mysql/data/:/var/lib/mysql
       - ./docker/mysql/log/:/var/log/mysql
     networks:
-      subnet:
-        ipv4_address: 192.168.99.4
+      - ahe-net
+
+networks:
+  ahe-net:
+    name: ahe-net
+    internal: true
+  npm_default:
+    name: npm_default
+    external: true
