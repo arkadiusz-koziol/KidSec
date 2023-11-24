@@ -9,3 +9,17 @@ body {
 html {
     background: #f3f4f6; /* ten sam kolor co bg-gray-100 z Tailwind CSS */
 }
+
+.list-title {
+    font-size: 2rem; 
+    margin-bottom: 1rem;
+}
+
+.list-group-custom {
+    max-width: 600px; 
+}
+
+.list-item-title {
+    font-weight: bold;
+    color: #333;
+}
