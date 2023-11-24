@@ -1,4 +1,4 @@
-FROM php:8.2.0-fpm AS laravelWebsite-php
+FROM php:8.2.0-fpm AS ahe-projekt-php
 
 RUN apt-get update && \
 apt-get -y upgrade && \
@@ -8,7 +8,7 @@ libxml2-dev libxslt-dev libgd-dev libiconv-hook-dev libicu-dev libonig-dev zlib1
 libbz2-dev openssl libssl-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev libmemcached-dev libmemcached11
 
 # Use the default production configuration
-RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+#RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 #
 RUN update-ca-certificates && \
 docker-php-ext-install bcmath ctype curl dom fileinfo && \
