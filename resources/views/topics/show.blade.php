@@ -9,7 +9,7 @@
                 <h2 class="card-title">{{ $topic->title }}</h2>
                 <h6 class="card-subtitle mb-2 text-muted">{{ $topic->subtitle }}</h6>
                 <div class="card-text mt-3">
-                    {!! nl2br(e($topic->content)) !!}
+                    {!! ($topic->content) !!}
                 </div>
             </div>
         </div>
