@@ -77,3 +77,17 @@ html {
 .btn-custom:hover {
     background-color: #45a049;
 }
+
+.btn-submit-custom {
+    background-color: #28a745;
+    color: white;
+    border: 1px solid transparent;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-submit-custom:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}

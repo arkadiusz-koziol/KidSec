@@ -18,25 +18,22 @@
                                 @method('PUT')
                             @endif
 
-                            <!-- Tytuł -->
                             <div class="mb-3">
                                 <label for="title" class="form-label">Tytuł</label>
                                 <input type="text" class="form-control" id="title" name="title" required value="{{ $topic->title ?? '' }}">
                             </div>
 
-                            <!-- Podtytuł -->
                             <div class="mb-3">
                                 <label for="subtitle" class="form-label">Podtytuł</label>
                                 <input type="text" class="form-control" id="subtitle" name="subtitle" value="{{ $topic->subtitle ?? '' }}">
                             </div>
 
-                            <!-- Treść -->
                             <div class="mb-3">
                                 <label for="content" class="form-label">Treść</label>
                                 <textarea class="form-control" id="content" name="content" rows="4">{{ $topic->content ?? '' }}</textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-custom">{{ isset($topic) ? 'Aktualizuj' : 'Zapisz' }}</button>
+                            <button type="submit" class="btn btn-submit-custom">{{ isset($topic) ? 'Aktualizuj' : 'Zapisz' }}</button>
                         </form>
                     </div>
                 </div>
@@ -45,7 +42,6 @@
     </div>
 
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
-    <!-- Skrypt CKEditor -->
     <script>
         CKEDITOR.replace('content')
         .create(document.querySelector('#editor'), {
