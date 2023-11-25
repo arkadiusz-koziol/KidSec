@@ -27,7 +27,7 @@ class TopicController extends Controller
         ]);
     
         Topic::create($validatedData);
-        return redirect()->route('topics.list');
+        return redirect()->route('list');
     }
 
     public function show(Topic $topic)
