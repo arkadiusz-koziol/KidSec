@@ -26,7 +26,7 @@
             <!-- Nawigacja -->
             <div class="flex flex-col md:flex-row md:mx-6">
                 @auth
-                    <a href="{{ url('/add-topic') }}" class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">Dodaj Temat</a>
+                    <a href="{{ url('/topics/create') }}" class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">Dodaj Temat</a>
                 @endauth
                 <a href="{{ url('/about') }}" class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">O Projekcie</a>
                 <a href="{{ url('/tips') }}" class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">Porady</a>
