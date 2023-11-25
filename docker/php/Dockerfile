@@ -19,8 +19,8 @@ docker-php-ext-configure intl && \
 docker-php-ext-install intl && \
 docker-php-ext-install mbstring pdo pdo_mysql xml simplexml xsl soap zip sockets
 
-RUN pecl install xdebug-3.2.2 && \
-docker-php-ext-enable xdebug
+#RUN pecl install xdebug-3.2.2 && \
+#docker-php-ext-enable xdebug
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
 php composer-setup.php --install-dir=/usr/local/bin --filename=composer

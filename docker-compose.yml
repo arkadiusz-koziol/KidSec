@@ -2,8 +2,9 @@ version: '3.7'
 
 services:
   nginx:
-    build: ./docker/nginx
-    pull_policy: build
+    image: gitea.kidsec.pl/vrozaksen/nginx:latest
+#    build: ./docker/nginx
+#    pull_policy: build
     container_name: ahe-projekt-nginx
     mem_reservation: 128M
     volumes:
@@ -15,10 +16,10 @@ services:
       - npm_default
 
   php:
-    image: php:8.2.0-fpm
+    image: gitea.kidsec.pl/vrozaksen/php:latest
     container_name: ahe-projekt-php
-    build: ./docker/php
-    pull_policy: build
+#    build: ./docker/php
+#    pull_policy: build
     mem_reservation: 512M
     volumes:
       - .:/application
@@ -26,6 +27,7 @@ services:
     working_dir: /application
     depends_on:
       - db
+      - npm
     networks:
       - ahe-net
       - npm_default
@@ -36,7 +38,7 @@ services:
     command: --explicit_defaults_for_timestamp
     environment:
       - MYSQL_ROOT_PASSWORD=45MVVyX7P95FsTKs
-      - MYSQL_USER=laravel
+      - MYSQL_USER=root
       - MYSQL_PASSWORD=sSfNo8C4pTHTzxV5
       - MYSQL_DATABASE=laravel
     restart: always
@@ -45,17 +47,29 @@ services:
       - ./docker/mysql/log/:/var/log/mysql
     networks:
       - ahe-net
+
+  npm:
+    image: ahe-projekt-npm
+    build: ./docker/npm
+    container_name: ahe-projekt-npm
+    command: run dev
+    volumes:
+      - .:/application
+      - .env:/application/.env
+    ports:
+      - 3444:3000
+      - 3445:3001
+    working_dir: /application
+    entrypoint: ['npm']
+    networks:
+      - ahe-net
+      - npm_default
+
 # Should be good
 networks:
   ahe-net:
-    driver: bridge
-    ipam:
-     config:
-       - subnet: 10.5.0.0/16
-         gateway: 10.5.0.1
-         aux_addresses:
-          db: 10.5.0.5
-          php: 10.5.0.6
+    name: ahe-net
+    internal: true
   npm_default:
     name: npm_default
     external: true
