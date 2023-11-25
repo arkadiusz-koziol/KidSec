@@ -42,15 +42,11 @@ class TopicController extends Controller
 
     public function update(Request $request, Topic $topic)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|max:255',
-            'content' => 'required'
-        ]);
-
-        $topic->update($validatedData);
-        return redirect()->route('topics.index');
+        $topic->update($request->all());
+    
+        return redirect()->route('topics.index')->with('success', 'Temat został zaktualizowany.');
     }
-
+    
     public function destroy(Topic $topic)
     {
         $topic->delete();
