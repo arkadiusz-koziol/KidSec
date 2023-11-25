@@ -33,7 +33,6 @@ return new class extends Migration
             $table->text('multi_factor_secret')
                 ->nullable();
             $table->softDeletes();
-            $table->auditable();
         });
     }
 
