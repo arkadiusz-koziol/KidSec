@@ -7,10 +7,9 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <div class="card shadow">
-                    <div class="card-header">
-                        <h4 class="card-title">Utwórz Nowy Temat</h4>
-                    </div>
                     <div class="card-body">
+                        <h2 class="text-center mb-4" style="font-weight: bold; font-size: 28px;">Utwórz Nowy Temat</h2>
+
                         <form method="POST" action="{{ route('topics.store') }}">
                             @csrf
                             <!-- Tytuł -->
@@ -31,7 +30,7 @@
                                 <textarea class="form-control" id="content" name="content" rows="4"></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-success">Zapisz</button>
+                            <button type="submit" class="btn btn-custom">Zapisz</button>
                         </form>
                     </div>
                 </div>
@@ -39,11 +38,11 @@
         </div>
     </div>
 
-
-    <script src="{{asset('js/ckeditor.js')}}"></script>
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    <!-- Skrypt CKEditor -->
     <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'), {
+        CKEDITOR.replace('content')
+        .create(document.querySelector('#editor'), {
                 toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
             })
             .then(editor => {
