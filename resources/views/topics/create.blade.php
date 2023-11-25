@@ -30,9 +30,22 @@
             <button type="submit" class="btn btn-primary">Zapisz</button>
         </form>
     </div>
-
-    <!-- Skrypt CKEditor -->
     <script>
-        CKEDITOR.replace('content');
-    </script>
+    CKEDITOR.replace('content', {
+        extraPlugins: 'image,justify,format',
+        toolbar: [
+            { name: 'clipboard', items: ['Undo', 'Redo'] },
+            { name: 'styles', items: ['Format', 'Font', 'FontSize'] },
+            { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', '-', 'RemoveFormat'] },
+            { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote'] },
+            { name: 'links', items: ['Link', 'Unlink'] },
+            { name: 'insert', items: ['Image', 'Table'] },
+            '/',
+            { name: 'document', items: ['Source'] }
+        ],
+        filebrowserUploadUrl: "{{ route('upload.image') }}",
+        filebrowserUploadMethod: 'form'
+    });
+</script>
+
 @endsection
