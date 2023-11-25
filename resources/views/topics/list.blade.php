@@ -20,7 +20,11 @@
                             Edytuj
                         </a>
 
-                        <form id="delete-form" action="" method="POST" style="display: none;">
+                        <button onclick="confirmDelete({{ $topic->id }})" class="btn btn-sm btn-outline-danger ml-2">
+                            Usuń
+                        </button>
+
+                        <form id="delete-form-{{ $topic->id }}" action="{{ route('topics.destroy', $topic->id) }}" method="POST" style="display: none;">
                             @csrf
                             @method('DELETE')
                         </form>
@@ -31,13 +35,11 @@
     </div>
 
     <script>
-    function confirmDelete(topicId) {
-        if(confirm('Czy na pewno chcesz usunąć ten temat?')) {
-            var form = document.getElementById('delete-form');
-            form.action = '/topics/' + topicId;
-            form.submit();
+        function confirmDelete(topicId) {
+            if(confirm('Czy na pewno chcesz usunąć ten temat?')) {
+                var form = document.getElementById('delete-form-' + topicId);
+                form.submit();
+            }
         }
-    }
-</script>
-
+    </script>
 @endsection
