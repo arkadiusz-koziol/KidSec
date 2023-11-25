@@ -28,7 +28,6 @@ Route::view('/contact', 'contact');
 Route::get('/list', [TopicController::class, 'index'])->name('list');
 Route::resource('topics', TopicController::class);
 
-Route::post('/upload-image', [ImageUploadController::class, 'upload'])->name('upload.image');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

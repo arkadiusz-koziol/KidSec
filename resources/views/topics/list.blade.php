@@ -16,13 +16,14 @@
                     </a>
 
                     @auth
-                        <a href="{{ url('/topics/' . $topic->id . '/edit') }}" class="btn btn-sm btn-outline-secondary">
-                            <i class="fas fa-pencil-alt"></i>
+                        <a href="{{ route('topics.edit', $topic->id) }}" class="btn btn-sm btn-outline-secondary">
+                            Edytuj
                         </a>
 
-                        <button class="btn btn-sm btn-outline-danger ml-2" onclick="confirmDelete({{ $topic->id }})">
-                            <i class="fas fa-trash"></i>
-                        </button>
+                        <form id="delete-form" action="" method="POST" style="display: none;">
+                            @csrf
+                            @method('DELETE')
+                        </form>
                     @endauth
                 </div>
             @endforeach
@@ -30,10 +31,13 @@
     </div>
 
     <script>
-        function confirmDelete(id) {
-            if(confirm('Czy na pewno chcesz usunąć ten temat?')) {
-                window.location.href = '/topics/delete/' + id;
-            }
+    function confirmDelete(topicId) {
+        if(confirm('Czy na pewno chcesz usunąć ten temat?')) {
+            var form = document.getElementById('delete-form');
+            form.action = '/topics/' + topicId;
+            form.submit();
         }
-    </script>
+    }
+</script>
+
 @endsection
