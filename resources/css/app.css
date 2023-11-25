@@ -76,35 +76,3 @@ html {
 .btn-custom:hover {
     background-color: #45a049;
 }
-
-.contact-info {
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 5px;
-    padding: 20px;
-    margin-top: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.contact-info p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    color: #333;
-}
-
-.contact-info a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.contact-info a:hover {
-    text-decoration: underline;
-}
-
-.contact-title {
-    text-align: center;
-    font-size: 2.5px;
-    font-weight: bold;
-    color: #343a40;
-    margin-bottom: 1px;
-}
