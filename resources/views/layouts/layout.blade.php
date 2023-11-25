@@ -27,15 +27,17 @@
             <div class="flex flex-col md:flex-row md:mx-6">
                 @auth
                     <a href="{{ url('/topics/create') }}" class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">Dodaj Temat</a>
-                    <form method="POST" action="{{ route('logout') }}" class="my-1 md:mx-4 md:my-0">
-                        @csrf
-                        <button type="submit" class="text-sm text-gray-700 font-medium hover:text-indigo-500">Wyloguj się</button>
-                    </form>
                 @endauth
                 <a href="{{ url('/about') }}" class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">O Projekcie</a>
                 <a href="{{ url('/tips') }}" class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">Porady</a>
                 <a href="{{ url('/resources') }}" class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">Materiały</a>
                 <a href="{{ url('/contact') }}" class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">Kontakt</a>
+                @auth
+                    <form method="POST" action="{{ route('logout') }}" class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">
+                            @csrf
+                        <button type="submit" class="text-sm text-gray-700 font-medium hover:text-indigo-500">Wyloguj się</button>
+                    </form>
+                @endauth
             </div>
         </div>
     </nav>
