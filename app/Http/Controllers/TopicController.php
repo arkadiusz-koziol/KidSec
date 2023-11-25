@@ -37,7 +37,7 @@ class TopicController extends Controller
 
     public function edit(Topic $topic)
     {
-        return view('topics.edit', compact('topic'));
+        return view('topics.create', compact('topic'));
     }
 
     public function update(Request $request, Topic $topic)
