@@ -9,7 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
@@ -26,6 +26,14 @@ return new class extends Migration
                 ->nullable();
             $table->boolean('is_active')
                 ->default(false);
+            $table->rememberToken();
+            $table->string('email_confirmation_code')
+                ->unique()
+                ->nullable();
+            $table->text('multi_factor_secret')
+                ->nullable();
+            $table->softDeletes();
+            $table->auditable();
         });
     }
 
