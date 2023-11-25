@@ -16,7 +16,7 @@
                     </a>
 
                     @auth
-                        <a href="{{ route('topics.edit', $topic->id) }}" class="btn btn-sm btn-outline-secondary">
+                        <a href="{{ route('topics.edit', $topic->id) }}" class="btn btn-sm btn-outline-secondary mr-2">
                             Edytuj
                         </a>
 
