@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TopicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +23,9 @@ Route::view('/about', 'about');
 Route::view('/tips', 'tips');
 Route::view('/resources', 'resources');
 Route::view('/contact', 'contact');
-Route::view('/list', 'list')->name('list');
 
-Route::view('/topics/addiction', 'topics.addiction')->name('topics.addiction');
-Route::view('/topics/cyber-violence', 'topics.cyber-violence')->name('topics.cyber-violence');
-Route::view('/topics/financial-fraud', 'topics.financial-fraud')->name('topics.financial-fraud');
-Route::view('/topics/grooming', 'topics.grooming')->name('topics.grooming');
-Route::view('/topics/harmful-content', 'topics.harmful-content')->name('topics.harmful-content');
-Route::view('/topics/sexting', 'topics.sexting')->name('topics.sexting');
-
+Route::get('/list', [TopicController::class, 'index'])->name('list');
+Route::resource('topics', TopicController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
