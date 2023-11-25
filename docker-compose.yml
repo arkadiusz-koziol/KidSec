@@ -13,7 +13,7 @@ services:
       - php
     networks:
       - ahe-net
-      - npm_default
+      - npm-net
 
   php:
     image: gitea.kidsec.pl/vrozaksen/php:latest
@@ -30,7 +30,7 @@ services:
       - npm
     networks:
       - ahe-net
-      - npm_default
+      - npm-net
 # DB Done. Remmeber ro edit .env or database.php
   db:
     image: mariadb
@@ -63,13 +63,13 @@ services:
     entrypoint: ['npm']
     networks:
       - ahe-net
-      - npm_default
+      - npm-net
 
 # Should be good
 networks:
   ahe-net:
     name: ahe-net
     internal: true
-  npm_default:
-    name: npm_default
+  npm-net:
+    name: npm-net
     external: true
