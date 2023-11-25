@@ -16,13 +16,14 @@
                     </a>
 
                     @auth
-                        <a href="{{ route('topics.edit', $topic->id) }}" class="btn btn-sm btn-outline-secondary mr-2">
-                            Edytuj
-                        </a>
-
-                        <button onclick="confirmDelete({{ $topic->id }})" class="btn btn-sm btn-outline-danger ml-2">
-                            Usuń
-                        </button>
+                        <div class="button-group">
+                            <a href="{{ route('topics.edit', $topic->id) }}" class="btn btn-sm btn-outline-secondary mr-1">
+                                Edytuj
+                            </a>
+                            <button onclick="confirmDelete({{ $topic->id }})" class="btn btn-sm btn-outline-danger">
+                                Usuń
+                            </button>
+                        </div>
 
                         <form id="delete-form-{{ $topic->id }}" action="{{ route('topics.destroy', $topic->id) }}" method="POST" style="display: none;">
                             @csrf
