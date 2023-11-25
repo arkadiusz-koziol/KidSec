@@ -4,48 +4,43 @@
 
 @section('content')
     <div class="container py-5">
-        <h2 class="mb-4">Utwórz Nowy Temat</h2>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h4 class="card-title">Utwórz Nowy Temat</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('topics.store') }}">
+                            @csrf
+                            <!-- Tytuł -->
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Tytuł</label>
+                                <input type="text" class="form-control" id="title" name="title" required>
+                            </div>
 
-        <form method="POST" action="{{ route('topics.store') }}">
-            @csrf
+                            <!-- Podtytuł -->
+                            <div class="mb-3">
+                                <label for="subtitle" class="form-label">Podtytuł</label>
+                                <input type="text" class="form-control" id="subtitle" name="subtitle">
+                            </div>
 
-            <!-- Tytuł -->
-            <div class="mb-3">
-                <label for="title" class="form-label">Tytuł</label>
-                <input type="text" class="form-control" id="title" name="title" required>
+                            <!-- Treść -->
+                            <div class="mb-3">
+                                <label for="content" class="form-label">Treść</label>
+                                <textarea class="form-control" id="content" name="content" rows="4"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Zapisz</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-
-            <!-- Podtytuł -->
-            <div class="mb-3">
-                <label for="subtitle" class="form-label">Podtytuł</label>
-                <input type="text" class="form-control" id="subtitle" name="subtitle">
-            </div>
-
-            <!-- Treść -->
-            <div class="mb-3">
-                <label for="content" class="form-label">Treść</label>
-                <textarea class="form-control" id="content" name="content" rows="4"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Zapisz</button>
-        </form>
+        </div>
     </div>
-    <script>
-    CKEDITOR.replace('content', {
-        extraPlugins: 'image,justify,format',
-        toolbar: [
-            { name: 'clipboard', items: ['Undo', 'Redo'] },
-            { name: 'styles', items: ['Format', 'Font', 'FontSize'] },
-            { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', '-', 'RemoveFormat'] },
-            { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote'] },
-            { name: 'links', items: ['Link', 'Unlink'] },
-            { name: 'insert', items: ['Image', 'Table'] },
-            '/',
-            { name: 'document', items: ['Source'] }
-        ],
-        filebrowserUploadUrl: "{{ route('upload.image') }}",
-        filebrowserUploadMethod: 'form'
-    });
-</script>
 
+    <!-- Skrypt CKEditor -->
+    <script>
+        CKEDITOR.replace('content');
+    </script>
 @endsection
