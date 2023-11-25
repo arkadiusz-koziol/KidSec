@@ -22,11 +22,12 @@ class TopicController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
+            'subtitle' => 'max:255',
             'content' => 'required'
         ]);
-
+    
         Topic::create($validatedData);
-        return redirect()->route('topics.index');
+        return redirect()->route('topics.list');
     }
 
     public function show(Topic $topic)
