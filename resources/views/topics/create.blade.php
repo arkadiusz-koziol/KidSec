@@ -39,8 +39,18 @@
         </div>
     </div>
 
-    <!-- Skrypt CKEditor -->
+
+    <script src="{{asset('js/ckeditor.js')}}"></script>
     <script>
-        CKEDITOR.replace('content');
+        ClassicEditor
+            .create(document.querySelector('#editor'), {
+                toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+            })
+            .then(editor => {
+                window.editor = editor;
+            })
+            .catch(err => {
+                console.error(err.stack);
+            });
     </script>
 @endsection
