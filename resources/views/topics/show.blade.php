@@ -4,11 +4,15 @@
 
 @section('content')
     <div class="container py-5">
-        <h2 class="mb-4">{{ $topic->title }}</h2>
-        <p class="text-muted">{{ $topic->subtitle }}</p>
-        <div class="content">
-            {{ $topic->content }}
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title">{{ $topic->title }}</h2>
+                <h6 class="card-subtitle mb-2 text-muted">{{ $topic->subtitle }}</h6>
+                <div class="card-text mt-3">
+                    {!! nl2br(e($topic->content)) !!}
+                </div>
+            </div>
         </div>
-        <a href="{{ route('topics.index') }}" class="btn btn-primary mt-4">Powrót do listy tematów</a>
+        <a href="{{ route('topics.index') }}" class="btn btn-outline-primary mt-4">Powrót do listy tematów</a>
     </div>
 @endsection
