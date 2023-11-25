@@ -31,7 +31,7 @@
                                 <textarea class="form-control" id="content" name="content" rows="4"></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Zapisz</button>
+                            <button type="submit" class="btn btn-success">Zapisz</button>
                         </form>
                     </div>
                 </div>
